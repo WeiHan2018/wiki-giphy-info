@@ -1,0 +1,12 @@
+<div>
+  <a routerLink="/history">History</a>
+
+  <p>
+    Please input search text, and then click the search button
+  </p>
+
+  <div>
+    <input [(ngModel)]="searchText" />
+    <button (click)="search()">Search</button>
+  </div>
+</div>
