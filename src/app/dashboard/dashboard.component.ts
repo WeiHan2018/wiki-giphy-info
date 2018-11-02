@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { WikiService } from '../wiki.service';
 import { HistoryService } from '../history.service';
+import { GiphyService } from '../giphy.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +19,13 @@ export class DashboardComponent implements OnInit {
   // search results from Wikipedia
   wikiSearchResults: string[];
 
-
+  // the number of search results from Giphy
+  giphyResultNum = 5;
+  // search results from Giphy
+  giphySearchResults: string[];
   
 
-  constructor(private wikiService: WikiService, private historyService: HistoryService) {
+  constructor(private wikiService: WikiService, private giphyService: GiphyService, private historyService: HistoryService) {
   }
 
   ngOnInit() {
@@ -42,6 +46,20 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.log(`Failed to search '${this.searchText}' on Wikipedia!`);
+        console.log(error);
+      }
+    );
+
+    // search from Giphy
+    this.giphyService.searchGiphy(this.searchText, this.giphyResultNum).subscribe(
+      (response) => {
+        console.log('Got search results from Giphy successfully!');
+        console.log(response);
+
+        this.giphySearchResults = response;
+      },
+      (error) => {
+        console.log(`Failed to search '${this.searchText}' on Giphy!`);
         console.log(error);
       }
     );

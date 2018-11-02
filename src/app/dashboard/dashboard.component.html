@@ -18,4 +18,16 @@
       {{ wikiSearchResult }}
     </div>
   </div>
+
+  <div *ngIf="giphySearchResults">
+    <h3>
+      Result from Giphy: {{ giphySearchResults.length }} results
+    </h3>
+    
+    <div *ngFor="let imageUrl of giphySearchResults">
+      <img  src="{{ imageUrl }}">
+      {{ imageUrl }}
+    </div>
+  </div>
+
 </div>
