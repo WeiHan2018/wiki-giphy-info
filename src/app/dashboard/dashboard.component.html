@@ -9,4 +9,13 @@
     <input [(ngModel)]="searchText" />
     <button (click)="search()">Search</button>
   </div>
+
+  <div *ngIf="wikiSearchResults">
+    <h3>
+      Result from Wikipedia: {{ wikiSearchResults.length }} results
+    </h3>
+    <div *ngFor="let wikiSearchResult of wikiSearchResults">
+      {{ wikiSearchResult }}
+    </div>
+  </div>
 </div>

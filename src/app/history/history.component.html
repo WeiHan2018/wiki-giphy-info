@@ -1,5 +1,28 @@
 <div>
   <a routerLink="/dashboard">Back</a>
 
+  <div *ngIf="searchHistory && searchHistory.length>0; then showHistory; else noHistory">
+  </div>
+  
+  <ng-template #showHistory>
+    <h3>
+      User search history:
+    </h3>
+            
+    <div *ngFor="let searchItem of searchHistory">
+      <span>
+        Search Text: {{ searchItem.searchText }}, 
+      </span>
+      <span>
+        Search Timestamp: {{ searchItem.timestamp }}
+      </span>
+    </div>
+  </ng-template>
+    
+  <ng-template #noHistory>
+    <h3>
+      No user search history
+    </h3>
+  </ng-template>
   
 </div>
