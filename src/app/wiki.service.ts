@@ -12,7 +12,7 @@ export class WikiService {
   // base url for Wikipedia API
   wikiBaseUrl: string = 'https://en.wikipedia.org/w/api.php?';
   // constant url params
-  constantUrlParams = 'action=query&list=search&format=json&origin=*';
+  constantUrlParams = 'action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*';
   // url param for the number of search results
   resultNumParam = '&srlimit=';
   // url param for search text
